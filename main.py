@@ -1,12 +1,23 @@
 from firstclass import Converter
-
+from geojson import Polygon, Point, MultiPoint, MultiPolygon, LineString, MultiLineString
 
 path = ('examp.csv')
-# path = ('example.json')
 
 
 # Получает объект типа:
 # {"coordinates": [широта: float, долгота: float], "type": "Point"}
-Points = Converter().convert(path)
+points = Converter().convert(path)
 
-print(Points)
+multi = MultiPoint(points)
+line = LineString(points)
+lines = [LineString(points) for i in range(5)]
+
+
+print('Список поинтов')
+print(points)
+print('Мультипоин')
+print(multi)
+print('Линия')
+print(line)
+print('Список линий')
+print(lines)

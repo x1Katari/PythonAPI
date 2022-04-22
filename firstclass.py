@@ -4,10 +4,9 @@ import csv
 import json
 
 
-
 class Converter:
     def convert(self, path):
-        suffix = Path(path).suffix #Получение расширения файла
+        suffix = Path(path).suffix  # Получение расширения файла
         match suffix:
             case '.csv':
                 return self.fromCSV(path)
@@ -20,7 +19,7 @@ class Converter:
             case _:
                 print('Неверный формат файла')
 
-    def fromCSV(self, path): # +- готово
+    def fromCSV(self, path):  # +- готово
         Points = []
         with open(path) as csvfile:
             reader = csv.reader(csvfile)
@@ -30,13 +29,6 @@ class Converter:
                 point = Point((float(row[0]), float(row[1])))
                 Points.append(point)
         return Points
-
-
-
-
-
-
-
 
     # def fromJSON(self, path): # не доделано
     #     input_file = json.load(open(path, "r", encoding="utf-8"))
